@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Tester</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #ffdde1; }
+        .container { margin-top: 50px; padding: 20px; background: white; display: inline-block; border-radius: 10px; }
+        input { padding: 10px; margin: 5px; }
+        button { padding: 10px 20px; background: #ff4d6d; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Love Tester ❤️</h2>
+        <p>Enter two names to check love compatibility</p>
+        <input type="text" id="name1" placeholder="Your Name">
+        <input type="text" id="name2" placeholder="Crush's Name">
+        <br>
+        <button onclick="calculateLove()">Test Love</button>
+        <div id="result"></div>
+        <br>
+        <button id="shareBtn" style="display:none; background:#1877F2;">Share on Facebook</button>
+    </div>
+
+    <script>
+        function calculateLove() {
+            let name1 = document.getElementById('name1').value;
+            let name2 = document.getElementById('name2').value;
+            if (name1 === '' || name2 === '') {
+                alert('Please enter both names!');
+                return;
+            }
+            let loveScore = Math.floor(Math.random() * 100) + 1;
+            let resultText = `${name1} ❤️ ${name2} - Love Score: ${loveScore}%`;
+            document.getElementById('result').innerHTML = resultText;
+            
+            document.getElementById('shareBtn').style.display = 'inline-block';
+            document.getElementById('shareBtn').onclick = function() {
+                let shareURL = `https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com&quote=${encodeURIComponent(resultText)}`;
+                window.open(shareURL, '_blank');
+            };
+        }
+    </script>
+</body>
+</html>
